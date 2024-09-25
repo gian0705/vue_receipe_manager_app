@@ -12,7 +12,7 @@
 
 - Add, Edit, Delete recipes
 - Search by title and filter recipes by difficulty.
-- Persistence using Pinia
+- State Management and Persistence using Pinia
 
 ## Demo
 
