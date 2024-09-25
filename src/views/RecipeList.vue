@@ -14,9 +14,9 @@
             type="text"
             v-model="searchTerm"
             placeholder="Search recipes..."
-            class="search-bar !mb-0"
+            class="search-bar !mb-0 rounded"
           />
-          <select v-model="selectedDifficulty">
+          <select v-model="selectedDifficulty" class="rounded px-2">
             <option value="">All Difficulties</option>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
