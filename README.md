@@ -1,5 +1,19 @@
-# Vue 3 + TypeScript + Vite
+# Recipe Manager App
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Installation
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+1. Clone the repository: `git clone https://github.com/gian0705/vue_receipe_manager_app`
+2. Navigate to the project folder `cd vue_receipe_manager_app`
+3. Install dependencies: `npm install`
+4. Start the app: `npm run dev`
+5. Open `http://localhost:5173` in your browser.
+
+## Features Implemented
+
+- Add, Edit, Delete recipes
+- Search by title and filter recipes by difficulty.
+- Persistence using Pinia
+
+## Demo
+
+https://vue-receipe-manager-app.vercel.app/
