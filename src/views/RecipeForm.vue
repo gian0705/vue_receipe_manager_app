@@ -107,10 +107,18 @@
           </select>
         </div>
 
-        <button type="submit">
+        <button
+          type="submit"
+          class="border px-4 py-2 rounded !mt-5 w-[200px] self-center"
+        >
           {{ isEditMode ? "Update Recipe" : "Add Recipe" }}
         </button>
-        <button @click="goBack">Cancel</button>
+        <button
+          @click="goBack"
+          class="border px-4 py-2 rounded !mt-10 w-[200px] self-center"
+        >
+          Cancel
+        </button>
       </form>
     </div>
   </div>
@@ -181,7 +189,6 @@ const removeStep = (index: number) => {
 
 function handleSubmit() {
   if (isEditMode.value) {
-    // Call update logic
     const index = recipeStore.recipes.findIndex(
       (r) => r.id === recipe.value.id
     );
