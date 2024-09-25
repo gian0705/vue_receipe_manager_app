@@ -12,7 +12,11 @@ export const useRecipeStore = defineStore({
         recipes: []
     } as RecipeState),
     actions: {
+        addRecipe(newRecipe: IRecipe) {
+            this.recipes.push(newRecipe);
+            console.log('this.recipes~~~', this.recipes);
 
+        },
     },
     persist: true,
 })

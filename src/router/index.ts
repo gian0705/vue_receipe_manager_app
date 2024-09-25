@@ -17,7 +17,7 @@ const routes = [
         component: RecipeDetail
     },
     {
-        path: '/form',
+        path: '/add',
         name: 'RecipeForm',
         component: RecipeForm
     },

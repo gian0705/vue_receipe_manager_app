@@ -1,5 +1,4 @@
 declare interface IRecipe {
-
     id?: number;
     title?: string;
     ingredients?: Ingredient[];
