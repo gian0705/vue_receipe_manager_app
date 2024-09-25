@@ -86,8 +86,9 @@
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import { useRecipeStore } from "../stores";
-
+import { useRouter } from "vue-router";
 const recipeStore = useRecipeStore();
+const router = useRouter();
 const searchTerm = ref("");
 const selectedDifficulty = ref("");
 
@@ -104,7 +105,7 @@ const filteredRecipes = computed(() => {
 });
 
 const editRecipe = (recipe: IRecipe) => {
-  // Logic to navigate to the edit page with the selected recipe's ID
+  router.push({ name: "EditForm", params: { id: recipe.id } });
 };
 
 const deleteRecipe = (rec: IRecipe) => {

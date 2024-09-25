@@ -4,8 +4,10 @@
       <i class="fa fa-arrow-left"></i>
     </button>
     <div class="flex flex-col items-center">
-      <span class="text-xl font-bold mb-4">Add Recipe</span>
-      <form @submit.prevent="addRecipe">
+      <span class="text-xl font-bold mb-4">{{
+        isEditMode ? "Edit Recipe" : "Add Recipe"
+      }}</span>
+      <form @submit.prevent="handleSubmit">
         <div class="flex gap-2">
           <label for="title" class="font-semibold">Title:</label>
           <input
@@ -105,26 +107,41 @@
           </select>
         </div>
 
-        <button type="submit" class="border px-4 py-2 rounded !mt-4">
-          Save Recipe
+        <button type="submit">
+          {{ isEditMode ? "Update Recipe" : "Add Recipe" }}
         </button>
+        <button @click="goBack">Cancel</button>
       </form>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRecipeStore } from "../stores";
-import { useRouter } from "vue-router";
-const receipeStore = useRecipeStore();
+import { useRouter, useRoute } from "vue-router";
+
+const recipeStore = useRecipeStore();
 const router = useRouter();
+const route = useRoute();
+const isEditMode = ref(false);
 const recipe = ref<IRecipe>({
   id: Date.now(), // Temporary ID generation
   title: "",
   ingredients: [],
   steps: [],
   difficulty: "easy",
+});
+
+onMounted(() => {
+  const recipeId = route.params.id as string;
+  if (recipeId) {
+    const foundRecipe = recipeStore.recipes.find(
+      (r) => r.id === Number(recipeId)
+    );
+    recipe.value = { ...foundRecipe };
+    isEditMode.value = true;
+  }
 });
 
 const newIngredient = ref<{ name: string; quantity: number }>({
@@ -162,11 +179,21 @@ const removeStep = (index: number) => {
   recipe.value.steps?.splice(index, 1);
 };
 
-const addRecipe = () => {
-  recipe.value.id = Date.now();
-  receipeStore.addRecipe(recipe.value);
+function handleSubmit() {
+  if (isEditMode.value) {
+    // Call update logic
+    const index = recipeStore.recipes.findIndex(
+      (r) => r.id === recipe.value.id
+    );
+    if (index !== -1) {
+      recipeStore.recipes[index] = recipe.value; // Update the recipe in the store
+    }
+  } else {
+    // Call add logic
+    recipeStore.addRecipe(recipe.value); // Add the recipe in the store
+  }
   goBack();
-};
+}
 const goBack = () => {
   router.go(-1);
 };
