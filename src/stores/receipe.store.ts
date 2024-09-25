@@ -9,7 +9,7 @@ export type RecipeState = {
 export const useRecipeStore = defineStore({
     id: 'Recipe',
     state: () => ({
-        recipes: []
+        recipes: [] as IRecipe[]
     } as RecipeState),
     actions: {
         addRecipe(newRecipe: IRecipe) {

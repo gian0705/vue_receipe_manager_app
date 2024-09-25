@@ -135,7 +135,7 @@ const newStep = ref("");
 
 const addIngredient = () => {
   if (newIngredient.value.name && newIngredient.value.quantity) {
-    recipe.value.ingredients.push({
+    recipe.value.ingredients?.push({
       id: Date.now(), // Temporary ID generation for each ingredient
       name: newIngredient.value.name,
       quantity: newIngredient.value.quantity,
@@ -145,12 +145,12 @@ const addIngredient = () => {
 };
 
 const removeIngredient = (index: number) => {
-  recipe.value.ingredients.splice(index, 1);
+  recipe.value.ingredients?.splice(index, 1);
 };
 
 const addStep = () => {
   if (newStep.value) {
-    recipe.value.steps.push({
+    recipe.value.steps?.push({
       id: Date.now(), // Temporary ID generation for each step
       description: newStep.value,
     });
@@ -159,7 +159,7 @@ const addStep = () => {
 };
 
 const removeStep = (index: number) => {
-  recipe.value.steps.splice(index, 1);
+  recipe.value.steps?.splice(index, 1);
 };
 
 const addRecipe = () => {

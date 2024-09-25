@@ -1,7 +1,7 @@
 declare interface IRecipe {
     id?: number;
     title?: string;
-    ingredients?: Ingredient[];
-    steps?: CookingStep[];
+    ingredients?: Iingredient[];
+    steps?: ICookingStep[];
     difficulty?: 'easy' | 'medium' | 'hard';
 }
